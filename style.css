@@ -1,32 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Montserrat:wght@500&display=swap');
 
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-  min-height: 100vh;
+body, html {
   margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   background-image: url("bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
-
 
 .container {
   width: 100%;
   max-width: 380px;
   padding: 24px 16px 32px;
   text-align: center;
+  flex: 1; /* занимает всё пространство между верхом и футером */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .avatar {
@@ -45,15 +46,12 @@ body {
 
   color: #ffffff;
 
-  /* обводка */
   -webkit-text-stroke: 0;
-
-  /* мягкая тень для глубины */
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 
   margin-bottom: 24px;
 }
+
 .links {
   display: flex;
   flex-direction: column;
@@ -70,7 +68,7 @@ body {
   text-decoration: none;
   font-size: 16px;
 
-  font-family: 'Montserrat', sans-serif; /* 👈 ВАЖНО */
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
 
   background: #ffffff;
@@ -78,7 +76,6 @@ body {
   border: 2px solid #c7b8ff;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-
 
 .link:hover {
   transform: translateY(-2px);
@@ -90,14 +87,12 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
 
-
 .icon {
   width: 28px;
   height: 28px;
   object-fit: contain;
   flex-shrink: 0;
 }
-
 
 .contact-btn {
   display: block;
@@ -107,11 +102,24 @@ body {
   text-decoration: none;
   font-size: 16px;
 
-  font-family: 'Montserrat', sans-serif; /* 👈 ВАЖНО */
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
 
   color: #ff7aa2;
   background: transparent;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.contact-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.contact-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
 
 @media (min-width: 768px) {
@@ -130,43 +138,18 @@ body {
   }
 }
 
-.contact-btn {
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-}
-
-.contact-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.contact-btn:active {
-  transform: scale(0.98);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-}
-
+/* ----------------- ФУТЕР ----------------- */
 .footer {
-  position: fixed;       /* фиксируем к низу экрана */
-  bottom: 0;             /* ровно по низу */
-  left: 0;
-  width: 100%;           /* растягиваем на всю ширину */
-  z-index: 10;
-
-  padding: 8px 0;        /* отступы внутри футера */
-  text-align: center;    /* центрируем контент */
+  position: relative;   /* больше не fixed */
+  margin-top: auto;     /* прижимает футер к низу страницы */
+  padding: 8px 0;
+  text-align: center;
+  width: 100%;
 
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(6px);
-
-  pointer-events: none; /* чтобы не мешал кликам, кроме ссылок */
+  pointer-events: none;
 }
-
-.footer-logo {
-  height: 18px;
-  width: auto;
-  opacity: 0.9;
-}
-
 
 .footer-link {
   pointer-events: auto;
@@ -181,9 +164,10 @@ body {
   color: #2b2b2b;
   text-decoration: none;
 
-  white-space: nowrap;  /* 🔑 не переносить на новую строку */
+  white-space: nowrap;  /* не переносить на новую строку */
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
+
 .footer-text {
   opacity: 0.7;
 }
