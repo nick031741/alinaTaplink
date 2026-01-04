@@ -141,14 +141,13 @@ body, html {
 /* ----------------- ФУТЕР ----------------- */
 .footer {
   position: relative;   /* больше не fixed */
-  margin-top: auto;     /* прижимает футер к низу страницы */
-  padding: 8px 0;
+  margin-top: auto;     /* прижимает футер к низу */
+  padding: 6px 12px;
   text-align: center;
   width: 100%;
-
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(6px);
-  pointer-events: none;
+  pointer-events: none; /* чтобы кликабельны были только ссылки */
+  background: transparent; /* убираем белый фон */
+  backdrop-filter: none;   /* убираем размытие */
 }
 
 .footer-link {
@@ -164,7 +163,7 @@ body, html {
   color: #2b2b2b;
   text-decoration: none;
 
-  white-space: nowrap;  /* не переносить на новую строку */
+  white-space: nowrap;  /* текст в одну строку */
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
